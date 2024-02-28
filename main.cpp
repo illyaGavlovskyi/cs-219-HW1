@@ -16,11 +16,4 @@ int main(){
     stream<<std::hex<< third;
     string hexString = stream.str();
     cout<<hexString<<endl;
-    // int arrnum[100];
-    // while(third > 0){
-    //     int cnt = 0;
-    //     arrnum[cnt] =
-        
-         
-    // }
 }
