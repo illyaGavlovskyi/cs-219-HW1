@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -13,28 +14,45 @@ int main(){
     string operation, firstS, secondS;
     uint32_t first, second, third;
 
-    cout<<"Enter operation and hexadecimal numbers:";
-    cin>>operation;
-    cin>>firstS;
-    cin>>secondS;
-
-    first = stoul(firstS, nullptr, 16);
-    second = stoul(secondS, nullptr, 16);
-    
-    if(operation == "ADD"){
-        third = first + second;
-    }
-    else{
-        cout<<"Not working"<<endl;
+    ifstream inputStream("data.txt");
+    if(!inputStream.is_open()){
+        cout<<"Error opening file!"<<endl;
         return 0;
     }
+    while(!inputStream.eof()){
+        operation = "";
+        firstS = "";
+        secondS = "";
+        // inputStream>>operation>>firstS>>secondS;
+        getline(inputStream, operation, ' ');
+        getline(inputStream, firstS, ' ');
+        getline(inputStream, secondS);
+        // cout<<"Enter operation and hexadecimal numbers:";
+        // cin>>operation;
+        // cin>>firstS;
+        // cin>>secondS;
 
-    stringstream stream;
-    stream<<hex<< third;
-    string hexString = stream.str();
+        first = stoul(firstS, nullptr, 16);
+        second = stoul(secondS, nullptr, 16);
+        
+        if(operation == "ADD"){
+            third = first + second;
+        }
+        else{
+            cout<<"Not working"<<endl;
+            return 0;
+        }
 
-    hexString = stringUp(hexString);
-    cout<<"0x"<<hexString<<endl;
+        stringstream stream;
+        stream<<hex<< third;
+        string hexString = stream.str();
+
+        hexString = stringUp(hexString);
+        cout<<"0x"<<hexString<<endl;
+        
+        
+    }
+    inputStream.close();
     return 0;
 }
 
