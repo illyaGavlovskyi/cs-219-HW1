@@ -27,6 +27,8 @@ int main(){
         getline(inputStream, operation, ' ');
         getline(inputStream, firstS, ' ');
         getline(inputStream, secondS);
+
+        cout<<operation<<"  "<<firstS<<"  "<<secondS<<": ";
         // cout<<"Enter operation and hexadecimal numbers:";
         // cin>>operation;
         // cin>>firstS;
@@ -48,9 +50,11 @@ int main(){
         string hexString = stream.str();
 
         hexString = stringUp(hexString);
-        cout<<"0x"<<hexString<<endl;
-        
-        
+        cout<<"0x";
+        for(int i = 0; i < 8 - hexString.length();i++){
+            cout<<"0";
+        }
+        cout<<hexString<<endl;
     }
     inputStream.close();
     return 0;
