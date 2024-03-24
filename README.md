@@ -1,4 +1,5 @@
 CS 219 Programming Project 2
+Illya Gavlovskyi
 
 to run this code you will run make and ./adder in the terminal.
 
